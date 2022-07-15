@@ -10,6 +10,7 @@ PLUG_EXPORT bool pluginit(PLUG_INITSTRUCT* initStruct)
 
     _plugin_registercommand(initStruct->pluginHandle, "AutoAttachStatus", cmd::status_command, false);
     _plugin_registercommand(initStruct->pluginHandle, "AutoAttachProcess", cmd::set_command, false);
+    _plugin_registercommand(initStruct->pluginHandle, "AutoAttachSleep", cmd::sleep_command, false);
 
     std::thread([]() {
         while (true) {
@@ -23,6 +24,7 @@ PLUG_EXPORT bool pluginit(PLUG_INITSTRUCT* initStruct)
 
             for (DWORD i = 0; i < count_process; ++i) {
                 if (!config::process.compare(process_info[i].pProcessName)) {
+                    std::this_thread::sleep_for(std::chrono::milliseconds(config::sleep));
                     PROCESS_INFORMATION* get_process_attach = TitanGetProcessInformation();
                     if (get_process_attach->dwProcessId != process_info[i].ProcessId) {
                         std::string command = std::format("AttachDebugger {:x}", process_info[i].ProcessId);
