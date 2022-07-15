@@ -13,4 +13,4 @@ AutoAttachStatus 1
 ### Example disable AutoAttach
 AutoAttachStatus 0
 ### if anything, commands are entered here :)
-![image](https://user-images.githubusercontent.com/84228488/179224847-49aef67d-b5da-436d-9554-8f9edcd223a7.png)
+![image](https://user-images.githubusercontent.com/84228488/179225200-2353b30b-d11a-40f4-89f1-41b61677642c.png)
